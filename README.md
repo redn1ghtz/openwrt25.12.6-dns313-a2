@@ -31,9 +31,9 @@
 ## 2. Что исправлено и проверено
 
 - **RAM:** исправлен Device Tree для 32 МБ; отключено резервирование CMA (`cma=0`).
-- **Оптимизация ядра:** отключены CONFIG_MEMCG, CONFIG_CGROUP_CPUACCT, CONFIG_CGROUP_RDMA, CONFIG_CGROUP_BPF и ненужные функции cgroups для уменьшения накладных расходов на устройстве с ограниченной памятью.
-- **Диагностика ядра:** сохранены CONFIG_DEBUG_FS, CONFIG_KALLSYMS и CONFIG_SLUB_DEBUG. Проверено, что дорогостоящие проверки SLUB (sanity_checks, red_zone, poison, store_user, trace) не активированы.
-- **Стабильность памяти:** проверены /proc/meminfo, /proc/slabinfo и фактическое потребление RAM процессами. Необратимого роста SUnreclaim во время наблюдения не обнаружено; основной прирост Slab приходится на освобождаемые кэши.
+- **Оптимизация ядра:** отключены `CONFIG_MEMCG`, `CONFIG_CGROUP_CPUACCT`, `CONFIG_CGROUP_RDMA`, `CONFIG_CGROUP_BPF` и ненужные функции cgroups для уменьшения накладных расходов на устройстве с ограниченной памятью.
+- **Диагностика ядра:** сохранены `CONFIG_DEBUG_FS`, `CONFIG_KALLSYMS` и `CONFIG_SLUB_DEBUG`. Проверено, что дорогостоящие проверки SLUB (`sanity_checks`, `red_zone`, `poison`, `store_user`, `trace`) не активированы.
+- **Стабильность памяти:** проверены `/proc/meminfo`, `/proc/slabinfo` и фактическое потребление RAM процессами. Необратимого роста SUnreclaim во время наблюдения не обнаружено; основной прирост Slab приходится на освобождаемые кэши.
 - **Ethernet:** исправлена инициализация Gemini Ethernet и очередей, заводской MAC-адрес читается из NOR flash через NVMEM. Основной порт работает на **1 Гбит/с**. Сообщение `PHY init failed` для второго PHY не препятствует работе сети.
 - **USB:** исправлен pull-up контроллера FOTG210; работает USB gadget **CDC ACM**. В Windows NAS определяется как последовательный COM-порт, через PuTTY доступна интерактивная консоль OpenWrt (`/dev/ttyGS0`).
 - **SATA и swap:** OpenWrt загружается с HDD, корень — ext4; предусмотрен swap-раздел 128 МБ.
